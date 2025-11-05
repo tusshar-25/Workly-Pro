@@ -14,19 +14,17 @@ This platform is designed to improve team communication, performance tracking, a
 
 ## 🔐 Login Credentials
 
-### **Admin Login**
+### **Company Login**
 | Field | Value |
 |-------|--------|
-| **Company Name** | WorklyPro |
-| **Company Code** | COMP-8768 |
-| **Password** | admin123 |
+| **Company Name** | TechCorp Solutions / InnovaSoft Systems |
+| **Company Code** | COMP-8768 / COMP-9451 |
 
 ### **Employee Login**
 | Field | Value |
 |-------|--------|
-| **Company Name** | WorklyPro |
-| **Company Code** | COMP-8768 |
-| **Password** | admin123 |
+| **Select Employee** | TechCorp Admin / Employees|
+| **Password** | 123456 |
 
 ---
 
