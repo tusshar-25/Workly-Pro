@@ -1,142 +1,205 @@
-🚀 WorklyPro – Complete Company Management System
+Got it! Here's a **revised README** that explains both **registering a new company & employee** and **logging in**, without assuming pre-existing data:
 
-WorklyPro is a modern full-stack Company Management Platform designed to simplify operations, boost productivity, and connect Admins and Employees under one efficient system.
+---
 
-🏢 Project Overview
+# 🚀 WorklyPro – Complete Company Management System
 
-WorklyPro provides a unified workspace where Admins can manage employees,      meetings, and tasks — while Employees can view their salary, assigned          tasks, meetings, and performance in one sleek dashboard.
+WorklyPro is a modern **full-stack company management platform** designed to simplify business operations, boost productivity, and connect admins and employees under one efficient system.
 
-This system enhances collaboration, productivity tracking, and organizational efficiency across any company.
+---
 
-💻 Register Company
+## 🏢 Project Overview
 
-You can register a company that will have a admin profile where you can add, delete, update (Employees, Tasks, Meetings) 
-then you also have employee profile after adding their you can see employees info (Salary, Tasks, Meetings, Performance, etc)
+WorklyPro provides a complete environment where:
 
-⚙️ Key Features
-  
-  👨‍💼 Admin Features
-      Register company with unique Company Code
-      Add, update, and delete employees
-      Assign and track tasks with due dates
-      Schedule and manage meetings
-      Manage salary and bonus details
-      View performance stats, upcoming deadlines, and company analytics
-      Track all recent employee activities
+* **Admins** can manage employees, meetings, and tasks.
+* **Employees** can view assigned tasks, salary, and meetings in one unified dashboard.
 
-  👩‍💻 Employee Features
-      Login using company name, code, and password
-      View assigned tasks and their progress
-      Access meeting schedules
-      See salary and bonus info
-      Track personal productivity and performance analytics
+The platform improves team communication, performance tracking, and overall company management efficiency.
 
-🧰 Tech Stack
+---
 
-  🎨 Frontend
-    ⚡ React.js (Vite)
-    💨 Tailwind CSS
-    ✨ Framer Motion (Animations)
-    📊 Recharts (Analytics & Charts)
-    🔔 Lucide React / React Icons
-  
-  ⚙️ Backend
-    🧠 Node.js + Express.js
-    🗄️ MongoDB + Mongoose
-    🔐 JWT Authentication
-    🌐 RESTful APIs
-    🧩 CORS & Environment Configuration
-    
-🗂️ Folder Structure
+## 🔐 Login & Registration
 
-WorklyPro/
-│
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── seed.js
-│   ├── server.js
-│   └── .env
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── context/
-│   │   ├── utils/
-│   │   └── main.jsx
-│   ├── index.html
-│   ├── package.json
-│   └── tailwind.config.js
-│
-└── README.md
+Since the project does not include preloaded MongoDB data, you can **register your own company and employees** and then login using those credentials.
 
-⚡ Setup Instructions
-1️⃣ Clone the Repository
-    git clone https://github.com/yourusername/worklypro.git
-    cd worklypro
+### **Company & Admin Registration**
 
-2️⃣ Install Dependencies
-  Backend
-    cd backend
-    npm install
+1. Go to the **registration page** in the app.
+2. Enter the following:
 
-  Frontend
-    cd ../frontend
-    npm install
+   * Company Name
+   * Company Email
+   * Admin Name
+   * Admin Email
+   * Password
+3. Upon registration:
 
-3️⃣ Configure Environment Variables
+   * A **unique Company Code** will be generated automatically.
+   * Admin can log in using **Company Name + Company Code + Password**.
 
-  Create a .env file inside the backend folder:
-    PORT=5000
-    MONGO_URI=your_mongodb_connection_string
-    JWT_SECRET=your_secret_key
+### **Employee Registration**
 
+* Admin can add employees from the **dashboard** after company registration.
+* Required fields for employee:
 
-  🧠 Run the Project
-  ▶️ Start Backend
-  cd backend
-  npm start
+  * Name
+  * Email
+  * Designation / Position
+  * Salary & Bonus (optional)
+  * Password (default can be set to `123456`)
+* Employees can log in using:
 
-  💻 Start Frontend
-  cd frontend
-  npm run dev
+  * Company Name
+  * Company Code
+  * Employee Name
+  * Password
 
+### **Login**
 
-Then open http://localhost:5173/
- in your browser.
+* Navigate to the **login page**.
+* Enter your **Company Name + Company Code + Email + Password**.
+* The system will redirect you to either:
 
-🖥️ Dashboard Overview
-🧩 Admin Dashboard
-    👥 Employee Summary (with DOJ & Contact)
-    📝 Task Assignment & Tracking
-    📅 Meeting Management
-    💰 Salary and Bonus Overview
-    📈 Performance Charts
-    🕒 Upcoming Deadlines (Next 15)
-    🗞️ Announcements (Auto from Meetings)
-    📋 Recent Activities (Employee Updates)
+  * **Admin Dashboard** (if admin)
+  * **Employee Dashboard** (if employee)
 
-👨‍🔧 Employee Dashboard
-    💵 Salary & Bonus card
-    ✅ Task progress overview
-    🗓️ Meetings schedule
-    📊 Weekly performance analytics
+> ✅ Tip: Once a company is registered, all employees must be added by the admin before they can log in.
 
-💎 UI Highlights
-    🖤 Modern dark-mode glassmorphism UI
-    💨 Tailwind-powered gradient components
-    ⚡ Framer Motion smooth animations
-    📱 Fully responsive layout
-    🧠 Organized modular structure
-    🧾 License
+---
+
+## ⚙️ Key Features
+
+### 👨‍💼 Admin Features
+
+* Register company with unique Company Code
+* Add, update, and delete employees
+* Assign and track tasks
+* Schedule and manage meetings
+* View company-wide performance & analytics
+* Manage salary and bonus details
+* See upcoming deadlines and recent activities
+
+### 👨‍🔧 Employee Features
+
+* Login using Company Name, Code, and Password
+* View assigned tasks and completion progress
+* Check upcoming meetings
+* Access salary and bonus information
+* Monitor performance charts
+* View personal productivity analytics
+
+---
+
+## 🧰 Tech Stack
+
+### Frontend
+
+* ⚡ React.js (Vite)
+* 🎨 Tailwind CSS
+* ✨ Framer Motion (animations)
+* 🧮 Recharts (analytics & charts)
+* 🔔 Lucide React / React Icons (UI icons)
+
+### Backend
+
+* ⚙️ Node.js + Express.js
+* 🗄️ MongoDB + Mongoose
+* 🔑 JWT Authentication
+* 🌐 RESTful APIs
+* 🧩 CORS and Environment Configuration
+
+---
+
+## 📊 Dashboard Overview
+
+### Admin Dashboard
+
+* 👥 Employee Summary (with DOJ & contact)
+* 📝 Task Assignment & Tracking
+* 📅 Meeting Management
+* 💰 Salary and Bonus Overview
+* 📈 Performance Charts (weekly progress)
+* 🕒 Upcoming Deadlines (next 15 tasks)
+* 🗞️ Announcements (auto from meetings)
+* 📋 Recent Activities (employee updates)
+
+### Employee Dashboard
+
+* 🧾 Salary and Bonus card
+* ✅ Task progress overview
+* 🗓️ Meetings schedule
+* 📊 Weekly performance chart
+
+---
+
+## 🪄 UI Highlights
+
+* Clean, modern dark mode interface
+* Glassmorphism and gradient UI design
+* Fully responsive for all devices
+* Smooth animations using Framer Motion
+* Organized layout with modular components
+* Beautiful typography using Inter & Roboto
+
+---
+
+## ⚡ Setup Instructions
+
+1. **Clone the repository**
+
+```bash
+git clone <repo-url>
+cd worklypro
+```
+
+2. **Install backend dependencies**
+
+```bash
+cd backend
+npm install
+```
+
+3. **Install frontend dependencies**
+
+```bash
+cd ../frontend
+npm install
+```
+
+4. **Set environment variables**
+
+* Create `.env` in backend with:
+
+```
+MONGO_URI=<your-mongo-uri>
+JWT_SECRET=<your-jwt-secret>
+```
+
+5. **Start backend**
+
+```bash
+cd backend
+npm run dev
+```
+
+6. **Start frontend**
+
+```bash
+cd frontend
+npm run dev
+```
+
+7. **Register a company & admin**, add employees, then log in using those credentials.
+
+---
 
 This project is open-source and available under the MIT License.
 
 🧑‍💻 Developed By
 
 Tushar Rathore
+
 🚀 Full-Stack Developer | MERN Enthusiast
 📧 Email: [tusharrathore853@gmail.com]
 🌐 GitHub: [https://github.com/tusshar-25]
