@@ -1,100 +1,143 @@
-# 🚀 WorklyPro – Complete Company Management System
+🚀 WorklyPro – Complete Company Management System
 
-**WorklyPro** is a modern full-stack company management platform designed to simplify business operations, boost productivity, and connect admins and employees under one efficient system.
+WorklyPro is a modern full-stack Company Management Platform designed to simplify operations, boost productivity, and connect Admins and Employees under one efficient system.
 
----
+🏢 Project Overview
 
-## 🏢 Project Overview
+WorklyPro provides a unified workspace where Admins can manage employees,      meetings, and tasks — while Employees can view their salary, assigned          tasks, meetings, and performance in one sleek dashboard.
 
-WorklyPro offers a complete environment where **Admins** can manage employees, meetings, and tasks — while **Employees** can view their assigned tasks, salary, and meetings in one unified dashboard.
+This system enhances collaboration, productivity tracking, and organizational efficiency across any company.
 
-This platform is designed to improve team communication, performance tracking, and overall company management efficiency.
+💻 Register Company
 
----
+You can register a company that will have a admin profile where you can add, delete, update (Employees, Tasks, Meetings) 
+then you also have employee profile after adding their you can see employees info (Salary, Tasks, Meetings, Performance, etc)
 
-## 🔐 Login Credentials
+⚙️ Key Features
+  
+  👨‍💼 Admin Features
+      Register company with unique Company Code
+      Add, update, and delete employees
+      Assign and track tasks with due dates
+      Schedule and manage meetings
+      Manage salary and bonus details
+      View performance stats, upcoming deadlines, and company analytics
+      Track all recent employee activities
 
-### **Company Login**
-| Field | Value |
-|-------|--------|
-| **Company Name** | TechCorp Solutions / InnovaSoft Systems |
-| **Company Code** | COMP-8768 / COMP-9451 |
+  👩‍💻 Employee Features
+      Login using company name, code, and password
+      View assigned tasks and their progress
+      Access meeting schedules
+      See salary and bonus info
+      Track personal productivity and performance analytics
 
-### **Employee Login**
-| Field | Value |
-|-------|--------|
-| **Select Employee** | TechCorp Admin / Employees|
-| **Password** | 123456 |
+🧰 Tech Stack
 
----
+  🎨 Frontend
+    ⚡ React.js (Vite)
+    💨 Tailwind CSS
+    ✨ Framer Motion (Animations)
+    📊 Recharts (Analytics & Charts)
+    🔔 Lucide React / React Icons
+  
+  ⚙️ Backend
+    🧠 Node.js + Express.js
+    🗄️ MongoDB + Mongoose
+    🔐 JWT Authentication
+    🌐 RESTful APIs
+    🧩 CORS & Environment Configuration
+    
+🗂️ Folder Structure
 
-## ⚙️ Key Features
+WorklyPro/
+│
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── seed.js
+│   ├── server.js
+│   └── .env
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   ├── utils/
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package.json
+│   └── tailwind.config.js
+│
+└── README.md
 
-### 👨‍💼 Admin Features
-- Register company with a unique **Company Code**
-- Add, update, and delete **Employees**
-- Assign and track **Tasks**
-- Schedule and manage **Meetings**
-- View company-wide **Performance & Analytics**
-- Manage **Salary** and **Bonus** details
-- See **Upcoming Deadlines** and **Recent Activities**
+⚡ Setup Instructions
+1️⃣ Clone the Repository
+    git clone https://github.com/yourusername/worklypro.git
+    cd worklypro
 
-### 👨‍🔧 Employee Features
-- Login using **Company Name, Code, and Password**
-- View assigned **Tasks** and completion progress
-- Check upcoming **Meetings**
-- Access salary and bonus information
-- Monitor performance charts
-- View personal productivity analytics
+2️⃣ Install Dependencies
+  Backend
+    cd backend
+    npm install
 
----
+  Frontend
+    cd ../frontend
+    npm install
 
-## 🧰 Tech Stack
+3️⃣ Configure Environment Variables
 
-### **Frontend**
-- ⚡ React.js (Vite)
-- 🎨 Tailwind CSS
-- ✨ Framer Motion (animations)
-- 🧮 Recharts (for analytics & charts)
-- 🔔 Lucide React / React Icons (UI icons)
+  Create a .env file inside the backend folder:
+    PORT=5000
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_secret_key
 
-### **Backend**
-- ⚙️ Node.js + Express.js
-- 🗄️ MongoDB + Mongoose
-- 🔑 JWT Authentication
-- 🌐 RESTful APIs
-- 🧩 CORS and Environment Configuration
 
----
+  🧠 Run the Project
+  ▶️ Start Backend
+  cd backend
+  npm start
 
-## 📊 Dashboard Overview
+  💻 Start Frontend
+  cd frontend
+  npm run dev
 
-### **Admin Dashboard Includes:**
-- 👥 Employee Summary (with DOJ & contact)
-- 📝 Task Assignment & Tracking
-- 📅 Meeting Management
-- 💰 Salary and Bonus Overview
-- 📈 Performance Charts (weekly progress)
-- 🕒 Upcoming Deadlines (next 15 tasks)
-- 🗞️ Announcements (auto from meetings)
-- 📋 Recent Activities (employee updates)
 
-### **Employee Dashboard Includes:**
-- 🧾 Salary and Bonus card
-- ✅ Task progress overview
-- 🗓️ Meetings schedule
-- 📊 Weekly performance chart
+Then open http://localhost:5173/
+ in your browser.
 
----
+🖥️ Dashboard Overview
+🧩 Admin Dashboard
+    👥 Employee Summary (with DOJ & Contact)
+    📝 Task Assignment & Tracking
+    📅 Meeting Management
+    💰 Salary and Bonus Overview
+    📈 Performance Charts
+    🕒 Upcoming Deadlines (Next 15)
+    🗞️ Announcements (Auto from Meetings)
+    📋 Recent Activities (Employee Updates)
 
-## 🪄 UI Highlights
+👨‍🔧 Employee Dashboard
+    💵 Salary & Bonus card
+    ✅ Task progress overview
+    🗓️ Meetings schedule
+    📊 Weekly performance analytics
 
-- Clean, modern **dark mode interface**
-- Glassmorphism and gradient UI design
-- Fully **responsive** for all devices
-- Smooth animations using **Framer Motion**
-- Organized layout with **modular components**
-- Beautiful typography using **Inter** & **Roboto**
+💎 UI Highlights
+    🖤 Modern dark-mode glassmorphism UI
+    💨 Tailwind-powered gradient components
+    ⚡ Framer Motion smooth animations
+    📱 Fully responsive layout
+    🧠 Organized modular structure
+    🧾 License
 
----
+This project is open-source and available under the MIT License.
+
+🧑‍💻 Developed By
+
+Tushar Rathore
+🚀 Full-Stack Developer | MERN Enthusiast
+📧 Email: [tusharrathore853@gmail.com]
+🌐 GitHub: [https://github.com/tusshar-25]
 
