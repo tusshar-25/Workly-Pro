@@ -28,9 +28,7 @@ const sanitizeEmployee = (employeeDoc) => {
  */
 export const registerCompany = async (req, res) => {
   try {
-    const { name, email, code, password, adminName, adminEmail, admin } =
-      req.body;
-
+    const { name, email, code, password, adminName, adminEmail, admin, adminPassword } = req.body;
     if (!name || !email) {
       return res
         .status(400)
@@ -224,7 +222,8 @@ export const deleteCompany = async (req, res) => {
 
 export const getCompanyById = async (req, res) => {
   try {
-    const company = await Company.findOne(req.params.id);
+    // Expecting a companyId string (e.g., COMP-1234)
+    const company = await Company.findOne({ companyId: req.params.id }).select("-password");
     if (!company) {
       return res.status(404).json({ msg: "Company not found" });
     }

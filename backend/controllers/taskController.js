@@ -7,13 +7,10 @@ import Task from "../models/Task.js";
 export const createTask = async (req, res) => {
   try {
     if (!["admin", "manager"].includes(req.user.role)) {
-      return res
-        .status(403)
-        .json({ msg: "Access denied. Admins or Managers only." });
+      return res.status(403).json({ msg: "Access denied. Admins or Managers only." });
     }
 
-    const { title, description, assignedTo, dueDate, status, priority } =
-      req.body;
+    const { title, description, assignedTo, dueDate, status, priority } = req.body;
     const companyId = req.user.companyId;
 
     if (!title || !assignedTo) {
@@ -31,14 +28,9 @@ export const createTask = async (req, res) => {
       createdBy: req.user.id,
     });
 
-    const populatedTask = await task
-      .populate("assignedTo", "name email")
-      .populate("company", "name");
+    const populatedTask = await task.populate("assignedTo", "name email");
 
-    res.status(201).json({
-      msg: "Task created successfully",
-      task: populatedTask,
-    });
+    res.status(201).json({ msg: "Task created successfully", task: populatedTask });
   } catch (error) {
     console.error("createTask:", error);
     res.status(400).json({ msg: "Error creating task", error: error.message });
@@ -46,22 +38,23 @@ export const createTask = async (req, res) => {
 };
 
 /**
- * Get all Tasks (All employees can view)
+ * Get all Tasks (for Admin or Employee)
  */
 export const getTasks = async (req, res) => {
   try {
-    const { assignedTo } = req.query;
     const companyId = req.user.companyId;
-
     let filter = { companyId };
-    if (assignedTo) filter.assignedTo = assignedTo;
+
+    // Admin can fetch all, employee only their tasks
+    if (req.user.role !== "admin") {
+      filter.assignedTo = req.user._id;
+    }
 
     const tasks = await Task.find(filter)
       .populate("assignedTo", "name email")
-      .populate("company", "name")
       .sort({ createdAt: -1 });
 
-    res.json(tasks);
+    res.json({ tasks });
   } catch (error) {
     console.error("getTasks:", error);
     res.status(500).json({ msg: "Server error", error: error.message });
@@ -69,16 +62,12 @@ export const getTasks = async (req, res) => {
 };
 
 /**
- * Get single Task by ID (All employees can view)
+ * Get single Task by ID
  */
 export const getTaskById = async (req, res) => {
   try {
-    const task = await Task.findOne({
-      _id: req.params.id,
-      companyId: req.user.companyId,
-    })
-      .populate("assignedTo", "name email")
-      .populate("company", "name");
+    const task = await Task.findOne({ _id: req.params.id, companyId: req.user.companyId })
+      .populate("assignedTo", "name email");
 
     if (!task) return res.status(404).json({ msg: "Task not found" });
     res.json(task);
@@ -94,18 +83,14 @@ export const getTaskById = async (req, res) => {
 export const updateTask = async (req, res) => {
   try {
     if (!["admin", "manager"].includes(req.user.role)) {
-      return res
-        .status(403)
-        .json({ msg: "Access denied. Admins or Managers only." });
+      return res.status(403).json({ msg: "Access denied. Admins or Managers only." });
     }
 
     const task = await Task.findOneAndUpdate(
-      { _id: req.params.id, company: req.user.companyId },
+      { _id: req.params.id, companyId: req.user.companyId },
       req.body,
       { new: true, runValidators: true }
-    )
-      .populate("assignedTo", "name email")
-      .populate("company", "name");
+    ).populate("assignedTo", "name email");
 
     if (!task) return res.status(404).json({ msg: "Task not found" });
     res.json({ msg: "Task updated successfully", task });
@@ -121,17 +106,12 @@ export const updateTask = async (req, res) => {
 export const deleteTask = async (req, res) => {
   try {
     if (!["admin", "manager"].includes(req.user.role)) {
-      return res
-        .status(403)
-        .json({ msg: "Access denied. Admins or Managers only." });
+      return res.status(403).json({ msg: "Access denied. Admins or Managers only." });
     }
 
-    const task = await Task.findOneAndDelete({
-      _id: req.params.id,
-      company: req.user.companyId,
-    });
-
+    const task = await Task.findOneAndDelete({ _id: req.params.id, companyId: req.user.companyId });
     if (!task) return res.status(404).json({ msg: "Task not found" });
+
     res.json({ msg: "Task deleted successfully" });
   } catch (error) {
     console.error("deleteTask:", error);
@@ -139,37 +119,33 @@ export const deleteTask = async (req, res) => {
   }
 };
 
-// ✅ Get all tasks by companyId (for dashboard stats)
+/**
+ * Get tasks by companyId (for admin dashboard)
+ */
 export const getTasksByCompany = async (req, res) => {
   try {
-    const tasks = await Task.find({ companyId: req.params.companyId });
-    const active = tasks.filter((t) => t.status === "active").length;
-    const completed = tasks.filter((t) => t.status === "completed").length;
-
-    res.json({
-      count: tasks.length,
-      active,
-      completed,
-      tasks,
-    });
+    const tasks = await Task.find({ companyId: req.params.companyId })
+      .populate("assignedTo", "name email")
+      .sort({ createdAt: -1 });
+    res.json({ tasks, count: tasks.length });
   } catch (error) {
     console.error("getTasksByCompany:", error);
-    res.status(500).json({
-      message: "Error fetching tasks",
-      error: error.message,
-    });
+    res.status(500).json({ msg: "Error fetching tasks", error: error.message });
   }
 };
 
-// ✅ Get all tasks by employee (for employee dashboard)
+/**
+ * Get tasks by employeeId (for employee dashboard)
+ */
 export const getTasksByEmployee = async (req, res) => {
   try {
-    const { employeeId } = req.params;
-    const tasks = await Task.find({ assignedTo: employeeId })
+    const tasks = await Task.find({ assignedTo: req.params.employeeId })
       .populate("assignedTo", "name email")
       .sort({ createdAt: -1 });
-    res.json(tasks);
+
+    res.json({ tasks });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("getTasksByEmployee:", error);
+    res.status(500).json({ msg: "Error fetching tasks", error: error.message });
   }
 };

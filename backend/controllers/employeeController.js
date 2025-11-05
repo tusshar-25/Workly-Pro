@@ -14,6 +14,7 @@ const sanitizeEmployee = (emp) => {
 };
 
 // ✅ Add employee (Admin only)
+
 export const addEmployee = async (req, res) => {
   try {
     // Only admin can add employee
@@ -21,13 +22,14 @@ export const addEmployee = async (req, res) => {
       return res.status(403).json({ msg: "Access denied. Admins only." });
     }
 
-    const { name, email, password, role, position, phone } = req.body;
+    const { name, email, password, role, position, phone, salary, bonus } = req.body;
     const companyId = req.user.companyId;
 
     if (!name || !email || !password) {
       return res.status(400).json({ msg: "Name, email & password required" });
     }
 
+    // Check if employee already exists
     const existing = await Employee.findOne({ companyId, email });
     if (existing) {
       return res
@@ -36,6 +38,11 @@ export const addEmployee = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    const numericSalary = Number(salary) || 0;
+    const numericBonus = Number(bonus) || 0;
+
+    // 👇 Ensure salary and bonus are numeric and stored properly
     const newEmp = await Employee.create({
       companyId,
       name,
@@ -44,11 +51,20 @@ export const addEmployee = async (req, res) => {
       role: role || "employee",
       position,
       phone,
+      salary: numericSalary,
+      bonus: numericBonus,
     });
 
-    res.status(201).json({
+    // Convert to plain object & sanitize
+    const cleanEmp = newEmp.toObject();
+    delete cleanEmp.password;
+
+    cleanEmp.salary = numericSalary;
+    cleanEmp.bonus = numericBonus;
+
+    return res.status(201).json({
       msg: "Employee created successfully",
-      employee: sanitizeEmployee(newEmp),
+      employee: cleanEmp,
     });
   } catch (err) {
     console.error("addEmployee:", err);
@@ -157,20 +173,30 @@ export const updateEmployee = async (req, res) => {
   }
 };
 
-// ✅ Delete employee (Admin only)
+// ✅ Delete employee (Admin only, with optional admin password)
 export const deleteEmployee = async (req, res) => {
   try {
+    // Ensure only admins can delete
     if (req.user.role !== "admin") {
       return res.status(403).json({ msg: "Access denied. Admins only." });
     }
 
     const { id } = req.params;
+    const { adminPassword } = req.body || {};
     const companyId = req.user.companyId;
 
-    const employee = await Employee.findOneAndDelete({ _id: id, companyId });
-    if (!employee) return res.status(404).json({ msg: "Employee not found" });
+    // 🔒 Optional: Check admin password from .env
+    if (process.env.ADMIN_PASSWORD && adminPassword !== process.env.ADMIN_PASSWORD) {
+      return res.status(401).json({ msg: "Invalid admin password" });
+    }
 
-    res.json({ msg: "Employee deleted successfully" });
+    // ✅ Delete employee only if belongs to same company
+    const employee = await Employee.findOneAndDelete({ _id: id, companyId });
+    if (!employee) {
+      return res.status(404).json({ msg: "Employee not found" });
+    }
+
+    res.json({ msg: "Employee deleted successfully", deletedId: id });
   } catch (err) {
     console.error("deleteEmployee:", err);
     res.status(500).json({ msg: "Server error", error: err.message });

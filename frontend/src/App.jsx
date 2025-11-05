@@ -6,15 +6,14 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./context/AuthContext";
 
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Employees from "./pages/Dashboard/Employees";
 import Meetings from "./pages/Dashboard/Meetings";
 import Tasks from "./pages/Dashboard/Tasks";
 import Subscription from "./pages/Dashboard/Subscription";
 import NotFound from "./pages/NotFound";
-import WelcomeScreen from "./components/WelcomeScreen";
+import WelcomeScreen from "./components/WelcomeScreen"; 
+import MainDash from "./pages/MainDashboard";
 
 
 const App = () => {
@@ -35,7 +34,7 @@ const App = () => {
 
 
       {/* Main Content Layout */}
-      <div className="flex flex-1 pt-20">
+        <div className="flex flex-1 pt-20 pb-24 md:pb-0">
         {/* Sidebar (hidden on login/register pages) */}
         {!isAuthPage && <Sidebar />}
 
@@ -49,8 +48,7 @@ const App = () => {
           {isAuthPage &&  <WelcomeScreen />}
 
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<MainDash />} />
 
             <Route
               path="/dashboard"
@@ -98,7 +96,9 @@ const App = () => {
       </div>
 
       {/* Footer */}
-      <Footer />
+      <div className="pb-12 md:pb-0">
+        <Footer />
+      </div>
     </div>
   );
 };

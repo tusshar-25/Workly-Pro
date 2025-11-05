@@ -2,30 +2,42 @@
 import Meeting from "../models/Meeting.js";
 
 /**
+ * Helper function to validate admin password
+ */
+const validateAdminPassword = (password) => {
+  return password === process.env.ADMIN_PASSWORD; // Set strong password in .env
+};
+
+/**
  * Create a new meeting (Admin or Manager only)
  */
 export const createMeeting = async (req, res) => {
   try {
-    if (!["admin", "manager"].includes(req.user.role)) {
-      return res
-        .status(403)
-        .json({ msg: "Access denied. Admins or Managers only." });
-    }
-
-    const { title, description, date, time, participants, location } = req.body;
+    const { title, description, datetime, participants, location, adminPassword } = req.body;
     const companyId = req.user.companyId;
     const createdBy = req.user.id;
 
-    if (!title || !date) {
-      return res.status(400).json({ msg: "Title and date are required" });
+    // Role check
+    if (!["admin", "manager"].includes(req.user.role)) {
+      return res.status(403).json({ msg: "Access denied. Admins or Managers only." });
     }
 
+    // Admin password check
+    if (!adminPassword) return res.status(400).json({ msg: "Admin password is required" });
+    if (!validateAdminPassword(adminPassword)) return res.status(401).json({ msg: "Invalid admin password" });
+
+    // Required fields check
+    if (!title || !datetime) return res.status(400).json({ msg: "Title and date are required" });
+
+    const dt = new Date(datetime);
+    if (isNaN(dt.getTime())) return res.status(400).json({ msg: "Invalid date format" });
+
+    // Create meeting
     const meeting = await Meeting.create({
       companyId,
       title,
       description,
-      date,
-      time,
+      datetime: dt,
       createdBy,
       participants,
       location,
@@ -48,7 +60,7 @@ export const getMeetings = async (req, res) => {
     const meetings = await Meeting.find({ companyId })
       .populate("participants", "name email")
       .populate("createdBy", "name email")
-      .sort({ date: -1 });
+      .sort({ datetime: -1 });
 
     res.json(meetings);
   } catch (err) {
@@ -81,14 +93,17 @@ export const getMeetingById = async (req, res) => {
  */
 export const updateMeeting = async (req, res) => {
   try {
+    const companyId = req.user.companyId;
+    const { adminPassword, ...updates } = req.body;
+
+    // Role check
     if (!["admin", "manager"].includes(req.user.role)) {
-      return res
-        .status(403)
-        .json({ msg: "Access denied. Admins or Managers only." });
+      return res.status(403).json({ msg: "Access denied. Admins or Managers only." });
     }
 
-    const companyId = req.user.companyId;
-    const updates = req.body;
+    // Admin password check
+    if (!adminPassword) return res.status(400).json({ msg: "Admin password is required" });
+    if (!validateAdminPassword(adminPassword)) return res.status(401).json({ msg: "Invalid admin password" });
 
     const meeting = await Meeting.findOneAndUpdate(
       { _id: req.params.id, companyId },
@@ -110,13 +125,18 @@ export const updateMeeting = async (req, res) => {
  */
 export const deleteMeeting = async (req, res) => {
   try {
+    const companyId = req.user.companyId;
+    const { adminPassword } = req.body;
+
+    // Role check
     if (!["admin", "manager"].includes(req.user.role)) {
-      return res
-        .status(403)
-        .json({ msg: "Access denied. Admins or Managers only." });
+      return res.status(403).json({ msg: "Access denied. Admins or Managers only." });
     }
 
-    const companyId = req.user.companyId;
+    // Admin password check
+    if (!adminPassword) return res.status(400).json({ msg: "Admin password is required" });
+    if (!validateAdminPassword(adminPassword)) return res.status(401).json({ msg: "Invalid admin password" });
+
     const meeting = await Meeting.findOneAndDelete({
       _id: req.params.id,
       companyId,
@@ -131,7 +151,9 @@ export const deleteMeeting = async (req, res) => {
   }
 };
 
-// ✅ Get all meetings by companyId (for dashboard stats)
+/**
+ * Get all meetings by companyId (for dashboard stats)
+ */
 export const getMeetingsByCompany = async (req, res) => {
   try {
     const { companyId } = req.params;

@@ -9,15 +9,19 @@ const axiosInstance = axios.create({
 
 // add Authorization header if token present
 axiosInstance.interceptors.request.use((config) => {
+  // Try token from separate key first, then from stored user
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  }
   const storedUser = localStorage.getItem("worklyUser");
   if (storedUser) {
     try {
-      const { token } = JSON.parse(storedUser);
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
+      const { token: userToken } = JSON.parse(storedUser);
+      if (userToken) config.headers.Authorization = `Bearer ${userToken}`;
     } catch (e) {
-      /* ignore JSON parse errors */
+      // ignore
     }
   }
   return config;

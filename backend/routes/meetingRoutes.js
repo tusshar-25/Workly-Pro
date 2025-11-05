@@ -1,4 +1,4 @@
-// routes/meetingRoutes.js
+// backend/routes/meetingRoutes.js
 import express from "express";
 import {
   createMeeting,
@@ -13,14 +13,18 @@ import { checkAdmin } from "../middleware/checkAdmin.js";
 
 const router = express.Router();
 
-// Only logged-in employees can view meetings
+// Meetings list for the company (protected)
+router.get("/company/:companyId", protect, getMeetingsByCompany);
+
+// Only logged-in employees can view all meetings (general list)
 router.get("/", protect, getMeetings);
+
+// Get meeting by ID (protected)
 router.get("/:id", protect, getMeetingById);
 
 // Admin/Manager can modify meetings
 router.post("/", protect, checkAdmin, createMeeting);
 router.put("/:id", protect, checkAdmin, updateMeeting);
 router.delete("/:id", protect, checkAdmin, deleteMeeting);
-router.get("/company/:companyId", getMeetingsByCompany);
 
 export default router;
