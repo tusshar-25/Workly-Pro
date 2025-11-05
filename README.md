@@ -98,27 +98,3 @@ This platform is designed to improve team communication, performance tracking, a
 
 ---
 
-## 🧱 Folder Structure
-
-WorklyPro/
-│
-├── backend/
-│ ├── controllers/
-│ ├── models/
-│ ├── routes/
-│ ├── utils/
-│ ├── server.js
-│ └── .env
-│
-├── frontend/
-│ ├── src/
-│ │ ├── assets/
-│ │ ├── components/
-│ │ ├── context/
-│ │ ├── pages/
-│ │ └── utils/
-│ ├── index.html
-│ └── vite.config.js
-│
-└── README.md
-
