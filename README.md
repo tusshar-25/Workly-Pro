@@ -201,6 +201,8 @@ This project is open-source and available under the MIT License.
 Tushar Rathore
 
 🚀 Full-Stack Developer | MERN Enthusiast
+
 📧 Email: [tusharrathore853@gmail.com]
+
 🌐 GitHub: [https://github.com/tusshar-25]
 
