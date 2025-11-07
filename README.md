@@ -14,11 +14,11 @@ WorklyPro is a modern **full-stack company management platform** designed to sim
 ![Welcome Screen](./screenshots/welcomeScreen.png)
 
 ### 📊 Main Dashboard
-![Main Dashboard](./screenshots/MainDashboard.png),
+![Main Dashboard](./screenshots/MainDashboard.png)
 (./screenshots/MainDashboard (2).png)
 
 ### 🧑‍💼 Admin Dashboard
-![Admin Dashboard](./screenshots/AdminDashboard.png),
+![Admin Dashboard](./screenshots/AdminDashboard.png)
 (./screenshots/AdminDashboard (2).png)
 
 ### 👥 Employees Page
