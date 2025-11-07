@@ -8,6 +8,33 @@ WorklyPro is a modern **full-stack company management platform** designed to sim
 
 ---
 
+## 📸 Project Screenshots
+
+### 🏠 Welcome Screen
+![Welcome Screen](./screenshots/welcomeScreen.png)
+
+### 📊 Main Dashboard
+![Main Dashboard](./screenshots/MainDashboard.png)
+![Main Dashboard](./screenshots/MainDashboard (2).png)
+
+### 🧑‍💼 Admin Dashboard
+![Admin Dashboard](./screenshots/AdminDashboard.png)
+![Admin Dashboard](./screenshots/AdminDashboard (2).png)
+
+### 👥 Employees Page
+![Employees Page](./screenshots/Employees.png)
+
+### 🗓️ Meetings Page
+![Meetings Page](./screenshots/Meetings.png)
+
+### ✅ Tasks Page
+![Tasks Page](./screenshots/Tasks.png)
+
+### 💳 Subscription Page
+![Subscription Page](./screenshots/subscription.png)
+
+---
+
 ## 🏢 Project Overview
 
 WorklyPro provides a complete environment where:
