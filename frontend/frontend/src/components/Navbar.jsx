@@ -71,7 +71,7 @@ const Navbar = () => {
         {/* Brand Section */}
         <div className="flex items-center gap-2 min-w-[160px]">
           <img
-            src="/logo.png"
+            src="/src/assets/logo.png"
             alt="Logo"
             className="w-14 h-9 sm:w-16 sm:h-10 object-contain transform hover:scale-125 transition-transform duration-300"
           />

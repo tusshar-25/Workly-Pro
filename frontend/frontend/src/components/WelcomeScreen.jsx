@@ -31,7 +31,7 @@ const WelcomeScreen = () => {
       {/* ===== Logo Reveal ===== */}
       <div className="animate-zoom-in mb-6 flex flex-col items-center">
         <img
-          src="/logo.png"
+          src="/src/assets/logo.png"
           alt="Workly Pro Logo"
           className="w-48 h-48 object-contain drop-shadow-lg"
         />
