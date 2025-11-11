@@ -3,7 +3,7 @@ import axios from "axios";
 
 // create axios instance
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api", // points to backend
+  baseURL: process.env.VITE_API_URL, // points to backend
   withCredentials: true, // needed if you use cookies (optional)
 });
 
