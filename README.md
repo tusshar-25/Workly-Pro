@@ -7,6 +7,44 @@ It provides a clean dashboard interface for both **Admin** and **Employees**, en
 
 ---
 
+
+## 🔐 Login Credentials
+
+Perfect! I can make a **clean table of login credentials** for your README so anyone can test the app easily. Assuming your data from before (all users have password `1223456`), here’s an example:
+
+---
+
+## **📝 Login Credentials for Workly-Pro**
+
+| Company Name       | Company Code | Employee/Admin        | Password |
+| ------------------ | ------------ | --------------------- | -------- |
+| TechCorp Solutions | COMP-8768    | Select Admin/Employee | 123456   |
+| InnovaSoft Systems | COMP-9451    | Select Admin/Employee | 123456   |
+
+---
+
+✅ **Instructions for testing:**
+
+1. Go to **Company Login** and enter the **Company Name** and **Company Code**.
+2. Proceed to **Employee/Admin Login**.
+3. Select a user from the dropdown, enter **password 1223456**, and click **Login**.
+4. You should be redirected to the dashboard (Admin or Employee based on role).
+
+---
+
+## 🌐 Live Links
+
+| Platform               | URL                                                                          |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| **Frontend (Netlify)** | [https://workly-pro.netlify.app](https://workly-pro.netlify.app)             |
+| **Backend (Render)**   | [https://workly-pro-xo10.onrender.com](https://workly-pro-xo10.onrender.com) |
+
+✅ **Usage:**
+
+- Frontend: Use the login credentials provided above to test the app.
+- Backend: The API endpoints are live at the Render URL. Frontend is already configured to use this backend.
+
+---
 ## 🚀 Tech Stack
 
 ### 🌐 Frontend
