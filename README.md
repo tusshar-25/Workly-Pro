@@ -1,10 +1,3 @@
-Perfect 👏 Tushar — thanks for the full stack info.
-Here’s your **complete professional `README.md`** for *Workly Pro*.
-It’s ready to upload directly to GitHub — I’ve formatted it perfectly with sections, badges, screenshots, credentials, and developer info.
-
----
-
-````markdown
 # 🧠 Workly Pro
 
 ### A Smart Workforce Management System
