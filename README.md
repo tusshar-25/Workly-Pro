@@ -10,12 +10,6 @@ It provides a clean dashboard interface for both **Admin** and **Employees**, en
 
 ## 🔐 Login Credentials
 
-Perfect! I can make a **clean table of login credentials** for your README so anyone can test the app easily. Assuming your data from before (all users have password `1223456`), here’s an example:
-
----
-
-## **📝 Login Credentials for Workly-Pro**
-
 | Company Name       | Company Code | Employee/Admin        | Password |
 | ------------------ | ------------ | --------------------- | -------- |
 | TechCorp Solutions | COMP-8768    | Select Admin/Employee | 123456   |
