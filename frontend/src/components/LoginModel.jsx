@@ -56,7 +56,7 @@ const LoginModel = ({ show, onClose }) => {
     }
     setLoading(true);
     try {
-      const res = await axiosInstance.post("/api/employees/login", {
+      const res = await axiosInstance.post("/employees/login", {
         email: selectedUser.email,
         password,
         companyId,
