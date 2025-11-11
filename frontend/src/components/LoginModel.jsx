@@ -31,7 +31,7 @@ const LoginModel = ({ show, onClose }) => {
     }
     setLoading(true);
     try {
-      const res = await axiosInstance.post("/companies/login", {
+      const res = await axiosInstance.post("/api/companies/login", {
         name: companyName,
         code: companyCode,
       });

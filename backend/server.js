@@ -9,7 +9,7 @@ import cors from "cors";
 
 dotenv.config();
 const app = express();
-app.use(cors({ origin: ["http://localhost:5173","https://workly-pro.netlify.app"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:5173","https://workly-pro.netlify.app", "https://workly-pro-xo10.onrender.com"], credentials: true }));
 app.use(express.json());
 
 // MongoDB connection
