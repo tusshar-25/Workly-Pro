@@ -3,7 +3,7 @@
 ### A Smart Workforce Management System
 
 **Workly Pro** is a modern full-stack workforce management platform that helps organizations efficiently manage employees, tasks, meetings, and performance — all in one place.  
-It provides a clean dashboard interface for both **Admin** and **Employees**, ensuring smooth workflow tracking, attendance management, and collaboration with real-time updates.
+It provides a clean dashboard interface for both **Admin** and **Employees**, ensuring smooth workflow tracking, task assigning, handling meetings, managing employees, and collaboration with real-time updates.
 
 ---
 
