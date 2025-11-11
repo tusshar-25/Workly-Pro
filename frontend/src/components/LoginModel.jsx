@@ -172,11 +172,7 @@ const LoginModel = ({ show, onClose }) => {
       ))}
     </div>
   )}
-</div>
-
-
-
-                
+</div>          
                 <input
                   type="password"
                   placeholder="Enter Password"
