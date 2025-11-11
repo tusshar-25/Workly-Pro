@@ -37,7 +37,7 @@ const Employees = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const res = await axiosInstance.get("/employees");
+        const res = await axiosInstance.get("/api/employees");
         setEmployees(res.data.employees || res.data || []);
       } catch (err) {
         console.error("Error fetching employees:", err);
@@ -63,7 +63,7 @@ const Employees = () => {
 
     setDeleting(true);
     try {
-      const res = await axiosInstance.delete(`/employees/${employeeToDelete._id}`, {
+      const res = await axiosInstance.delete(`api/employees/${employeeToDelete._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         data: { adminPassword },
       });
@@ -95,7 +95,7 @@ const handleAddEmployee = async () => {
 
   setAdding(true);
   try {
-    const res = await axiosInstance.post("/employees", newEmployee, {
+    const res = await axiosInstance.post("/api/employees", newEmployee, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
 
@@ -126,7 +126,7 @@ const handleAddEmployee = async () => {
 
     setUpdating(true);
     try {
-      const res = await axiosInstance.put(`/employees/${updateData._id}`, updateData, {
+      const res = await axiosInstance.put(`/api/employees/${updateData._id}`, updateData, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       alert("Employee updated successfully!");

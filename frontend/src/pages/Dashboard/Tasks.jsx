@@ -39,8 +39,8 @@ const Tasks = () => {
       setLoading(true);
       const res = await axiosInstance.get(
         isAdmin
-          ? `/tasks/company/${user.companyId}`
-          : `/tasks/employee/${user._id}`
+          ? `/api/tasks/company/${user.companyId}`
+          : `/api/tasks/employee/${user._id}`
       );
       setTasks(res.data.tasks || []);
     } catch (err) {
@@ -54,7 +54,7 @@ const Tasks = () => {
   const fetchEmployees = async () => {
     if (!isAdmin) return;
     try {
-      const res = await axiosInstance.get(`/employees/company/${user.companyId}`);
+      const res = await axiosInstance.get(`/api/employees/company/${user.companyId}`);
       setEmployees(res.data.employees || []);
     } catch (err) {
       console.error("Error fetching employees:", err);
@@ -105,10 +105,10 @@ const Tasks = () => {
 
     try {
       if (editingTask) {
-        await axiosInstance.put(`/tasks/${editingTask._id}`, payload);
+        await axiosInstance.put(`/api/tasks/${editingTask._id}`, payload);
         alert("Task updated successfully!");
       } else {
-        await axiosInstance.post("/tasks", payload);
+        await axiosInstance.post("/api/tasks", payload);
         alert("Task added successfully!");
       }
 
@@ -137,7 +137,7 @@ const Tasks = () => {
     }
 
     try {
-      await axiosInstance.delete(`/tasks/${deleteTaskId}`, { data: { adminPassword } });
+      await axiosInstance.delete(`/api/tasks/${deleteTaskId}`, { data: { adminPassword } });
       setTasks((prev) => prev.filter((t) => t._id !== deleteTaskId));
       alert("Task deleted successfully!");
       setShowDeleteModal(false);

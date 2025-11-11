@@ -39,7 +39,7 @@ const Meetings = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await axiosInstance.get("/meetings");
+      const res = await axiosInstance.get("/api/meetings");
       setMeetings(res.data);
     } catch (err) {
       console.error("Error fetching meetings:", err);
@@ -52,7 +52,7 @@ const Meetings = () => {
   // Fetch employees for participants dropdown
   const fetchEmployees = async () => {
     try {
-      const res = await axiosInstance.get("/employees");
+      const res = await axiosInstance.get("/api/employees");
       setEmployees(res.data);
     } catch (err) {
       console.error("Error fetching employees:", err);
@@ -114,12 +114,12 @@ const Meetings = () => {
     try {
       if (editingMeeting) {
         const res = await axiosInstance.put(
-          `/meetings/${editingMeeting._id}`,
+          `/api/meetings/${editingMeeting._id}`,
           payload
         );
         alert(res.data.message || "Meeting updated successfully!");
       } else {
-        const res = await axiosInstance.post("/meetings", payload);
+        const res = await axiosInstance.post("/api/meetings", payload);
         alert(res.data.message || "Meeting added successfully!");
       }
 
@@ -155,7 +155,7 @@ const Meetings = () => {
     }
 
     try {
-      await axiosInstance.delete(`/meetings/${deleteMeetingId}`, {
+      await axiosInstance.delete(`/api/meetings/${deleteMeetingId}`, {
         data: { adminPassword },
       });
       setMeetings((prev) => prev.filter((m) => m._id !== deleteMeetingId));
