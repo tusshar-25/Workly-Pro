@@ -32,7 +32,7 @@ const RegisterModel = ({ show, onClose }) => {
     }
     setLoading(true);
     try {
-      const res = await axiosInstance.post("/companies/register", {
+      const res = await axiosInstance.post("api/companies/register", {
         name: companyName,
         email: companyEmail,
         adminName,
