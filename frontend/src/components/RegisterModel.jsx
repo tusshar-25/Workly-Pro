@@ -46,7 +46,7 @@ const RegisterModel = ({ show, onClose }) => {
         role: "admin",
         companyId: res.data.company.companyId,
       });
-      navigate("/admin/dashboard");
+      navigate("/dashboard");
       onClose();
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
