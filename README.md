@@ -70,26 +70,6 @@ It provides a clean dashboard interface for both **Admin** and **Employees**, en
 
 ---
 
-## 🔐 Login Credentials
-
-### 🏢 Company 1: TechCorp Solutions
-**Company Code:** `COMP-8768`
-
-| Role | Email | Password |
-|------|--------|-----------|
-| Admin | admin@techcorp.com | 123456 |
-| Employee | employee@techcorp.com | 123456 |
-
-### 🏢 Company 2: InnovaSoft Systems
-**Company Code:** `COMP-9451`
-
-| Role | Email | Password |
-|------|--------|-----------|
-| Admin | admin@innovasoft.com | 123456 |
-| Employee | employee@innovasoft.com | 123456 |
-
----
-
 ## 🖼️ Screenshots
 
 | Section | Preview |
