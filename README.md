@@ -145,8 +145,11 @@ npm run dev
 ## 🧑‍💻 Developed By
 
 **👤 Tushar Rathod**
+
 📧 [tusharrathore853@gmail.com](mailto:tusharrathore853@gmail.com)
+
 📞 +91 99938 02243
+
 🔗 [LinkedIn Profile](https://www.linkedin.com/in/tusharrathore25)
 
 ---
