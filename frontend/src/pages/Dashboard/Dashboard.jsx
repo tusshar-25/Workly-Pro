@@ -39,10 +39,10 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [companyRes, empRes, taskRes, meetingRes] = await Promise.all([
-          axiosInstance.get(`/companies/${companyId}`),
-          axiosInstance.get(`/employees/company/${companyId}`),
-          axiosInstance.get(`/tasks/company/${companyId}`),
-          axiosInstance.get(`/meetings/company/${companyId}`),
+          axiosInstance.get(`/api/companies/${companyId}`),
+          axiosInstance.get(`/api/employees/company/${companyId}`),
+          axiosInstance.get(`/api/tasks/company/${companyId}`),
+          axiosInstance.get(`/api/meetings/company/${companyId}`),
         ]);
 
         const companyData = companyRes.data.company || companyRes.data || {};
