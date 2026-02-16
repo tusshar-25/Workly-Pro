@@ -157,4 +157,4 @@ npm run dev
 
 Special thanks to all open-source libraries and tools that made this project possible.
 
---
+<!-- Last updated: 2026-02-16 -->
