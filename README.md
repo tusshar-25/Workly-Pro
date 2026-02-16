@@ -113,6 +113,7 @@ It provides a clean dashboard interface for both **Admin** and **Employees**, en
 | **Meetings** | ![Meetings](./screenshots/Meetings.png) |
 | **Tasks** | ![Tasks](./screenshots/Tasks.png) |
 | **Subscription** | ![Subscription](./screenshots/subscription.png) |
+| **Logo** | ![Logo](./screenshots/mainLogo.png) |
 
 ---
 
