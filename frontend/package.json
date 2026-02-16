@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Workly Pro Frontend Application",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
